@@ -18,12 +18,11 @@ jobs:
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
         with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+          token: ${{ secret.DIGITALOCEAN_ACCESS_TOKEN }}
       - name: Log in to DO Container Registry
         run: doctl registry login --expiry-seconds 600
       - name: Tag image
         run:
           docker tag it-works \
-          registry.digitalocean.com/next-level/:${{ github.event.inputs.version }}
       - name: Push image to DO Container Registry
-        run: docker push registry.digitalocean.com/next-level/:${{ github.event.inputs.version }}
+        run: docker push $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)
