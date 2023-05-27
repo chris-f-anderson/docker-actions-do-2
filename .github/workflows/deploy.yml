@@ -24,6 +24,6 @@ jobs:
       - name: Tag image
         run:
           docker tag it-works \
-          registry.digitalocean.com/next-level:${{ github.even.inputs.version }}
+          registry.digitalocean.com/next-level/next-level-page:${{ github.even.inputs.version }}
       - name: Push image to DO Container Registry
-        run: docker push registry.digitalocean.com/next-level:${{ github.event.inputs.version }}
+        run: docker push registry.digitalocean.com/next-level/next-level-page:${{ github.event.inputs.version }}
