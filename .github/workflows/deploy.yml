@@ -25,5 +25,4 @@ jobs:
         run: docker tag it-works registry.digitalocean.com/next-level/it-works
       - name: Push image to DO Container Registry
         run: docker push registry.digitalocean.com/next-level/it-works
-      - name: Run container
-        run: docker run -d -p 9999:80 00a6c46f2808
+      
